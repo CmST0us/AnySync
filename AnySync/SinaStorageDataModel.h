@@ -10,6 +10,8 @@
 
 @interface SinaStorageDataModel : NSObject
 
+@property (nonatomic, assign) BOOL isLastDirectoryInDictionary;
+
 - (instancetype)initWithContentsArray:(NSArray *)contentsArray;
 + (instancetype)dataModelWithContentsArray:(NSArray *)contentsArray;
 + (instancetype)dataModel;
@@ -18,5 +20,11 @@
 
 - (void)changeDirectoryToNextDirectoryWithName:(NSString *)nextDirectoryName;
 - (void)changeDirectoryToRoot;
+- (void)changeDirectoryToPathFromRoot:(NSString *)path;
+- (void)changeDirectoryToPathFromCurrentDirectory:(NSString *)path;
+
+- (NSArray *)directories;
+- (NSArray *)files;
+
 
 @end

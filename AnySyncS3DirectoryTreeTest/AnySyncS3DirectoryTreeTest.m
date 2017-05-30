@@ -9,6 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "ERS3BucketRequest.h"
 #import "SinaStorageDataModel.h"
+#import "SinaStorageFile.h"
+#import "SinaStorageDirectory.h"
 @interface AnySyncS3DirectoryTreeTest : XCTestCase{
     
 }
@@ -44,9 +46,65 @@
         [dataModel feedContentsArray:contentArray];
         NSLog(@"time cost:%f", [[NSDate date] timeIntervalSinceDate:date]);
     }];
+    [dataModel changeDirectoryToNextDirectoryWithName:@"haproxy-master"];
+    [[dataModel directories] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SinaStorageDirectory *directory = obj;
+        NSLog(@"Directory: %@", directory.name);
+    }];
+    [[dataModel files] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SinaStorageFile *file = obj;
+        NSLog(@"File: %@", file.name);
+    }];
+    
+    [dataModel changeDirectoryToPathFromRoot:@"haproxy-master/src/"];
+    [[dataModel files] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SinaStorageFile *file = obj;
+        NSLog(@"File: %@", file.name);
+    }];
     NSLog(@"ok");
 }
+- (void)testChangeToPath {
+    SinaStorageDataModel *dataModel = [[SinaStorageDataModel alloc] init];
+    NSArray *dictArray = [_bucketRequest listAllObjectsWithError:NULL];
+    if ([dictArray count] == 0) {
+        NSLog(@"NULL");
+    }
+    [dictArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *bucketsDictionary = obj;
+        NSArray *contentArray = [bucketsDictionary objectForKey:@"Contents"];
+        NSDate *date = [NSDate date];
+        [dataModel feedContentsArray:contentArray];
+        NSLog(@"time cost:%f", [[NSDate date] timeIntervalSinceDate:date]);
+    }];
+    
+    [dataModel changeDirectoryToPathFromRoot:@"haproxy-master/src/"];
+    [[dataModel files] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SinaStorageFile *file = obj;
+        NSLog(@"File: %@", file.name);
+    }];
+}
 
+- (void)testChangeToPathFromCurrent {
+    SinaStorageDataModel *dataModel = [[SinaStorageDataModel alloc] init];
+    dataModel.isLastDirectoryInDictionary = YES;
+    NSArray *dictArray = [_bucketRequest listAllObjectsWithError:NULL];
+    if ([dictArray count] == 0) {
+        NSLog(@"NULL");
+    }
+    [dictArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *bucketsDictionary = obj;
+        NSArray *contentArray = [bucketsDictionary objectForKey:@"Contents"];
+        NSDate *date = [NSDate date];
+        [dataModel feedContentsArray:contentArray];
+        NSLog(@"time cost:%f", [[NSDate date] timeIntervalSinceDate:date]);
+    }];
+    
+    [dataModel changeDirectoryToPathFromRoot:@"haproxy-master/../"];
+    [[dataModel directories] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SinaStorageDirectory *directory = obj;
+        NSLog(@"Directory: %@", directory.name);
+    }];
+}
 - (void)testPathToDirectorieyNameArray {
 //    NSArray *filePath = [SinaStorageDataModel _parsePathToDirectoryNameArray:@"asdfas/asdfasd/fasdfasdfa"];
 //    NSArray *directoryPath = [SinaStorageDataModel _parsePathToDirectoryNameArray:@"asdfas/asdfasd/fasdfasdfa/"];

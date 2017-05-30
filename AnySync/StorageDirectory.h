@@ -18,6 +18,7 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSDate *modifyDate;
+@property (nonatomic, assign) BOOL isLastDirectoryInDictionary;
 
 - (void)addNextDirectory:(StorageDirectory *)subDirectory;
 - (void)addFile:(StorageFile *)file;

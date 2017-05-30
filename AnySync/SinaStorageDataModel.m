@@ -36,6 +36,8 @@
     if (self) {
         _rootDirectory = [[SinaStorageDirectory alloc] init];
         _currentDirectory = _rootDirectory;
+        _isLastDirectoryInDictionary = NO;
+        _rootDirectory.isLastDirectoryInDictionary = _isLastDirectoryInDictionary;
     }
     return self;
 }
@@ -69,6 +71,7 @@
                 //不存在
 #warning 搜集目录信息TODO
                 next = [[SinaStorageDirectory alloc] init];
+                next.isLastDirectoryInDictionary = _isLastDirectoryInDictionary;
                 next.name = directoryName;
                 [pCurrentDirectory addNextDirectory:next];
             }
@@ -82,7 +85,27 @@
     }
 }
 
-#pragma mark - change directory method
+#pragma mark - instance method
+- (void)changeDirectoryToPathFromRoot:(NSString *)path {
+    __weak typeof(self) weakSelf = self;
+    
+    NSArray *directoryHierarchy = [self _parsePathToDirectoryNameArray:path];
+    [self changeDirectoryToRoot];
+    [directoryHierarchy enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [weakSelf changeDirectoryToNextDirectoryWithName:obj];
+    }];
+}
+
+- (void)changeDirectoryToPathFromCurrentDirectory:(NSString *)path {
+    __weak typeof(self) weakSelf = self;
+    
+    NSArray *directoryHierarchy = [self _parsePathToDirectoryNameArray:path];
+    [directoryHierarchy enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [weakSelf changeDirectoryToNextDirectoryWithName:obj];
+    }];
+}
 - (void)changeDirectoryToNextDirectoryWithName:(NSString *)nextDirectoryName {
     _currentDirectory = (SinaStorageDirectory *)[_currentDirectory nextDirectoryWithName:nextDirectoryName];
 }
@@ -90,6 +113,16 @@
 - (void)changeDirectoryToRoot {
     _currentDirectory = _rootDirectory;
 }
+
+- (NSArray<SinaStorageDirectory *> *)directories {
+    return (NSArray<SinaStorageDirectory *> *)[[_currentDirectory nextDirectories] allValues];
+}
+
+- (NSArray<SinaStorageFile *> *)files {
+    return (NSArray<SinaStorageFile *> *)[[_currentDirectory files] allValues];
+}
+
+
 #pragma mark - setter method
 
 #pragma mark - getter method

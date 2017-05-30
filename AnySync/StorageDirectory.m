@@ -18,6 +18,7 @@
         _nextDirectories = [NSMutableDictionary dictionary];
         _files = [NSMutableDictionary dictionary];
         _name = @"";
+        _isLastDirectoryInDictionary = NO;
     }
     return self;
 }
@@ -54,4 +55,14 @@
 - (StorageFile *)fileWithName:(NSString *)fileName {
     return [_files objectForKey:fileName];
 }
+
+#pragma mark - setter
+- (void)setLastDirectory:(StorageDirectory *)lastDirectory {
+    _lastDirectory = lastDirectory;
+    if (_isLastDirectoryInDictionary) {
+        [_nextDirectories setObject:lastDirectory forKey:@".."];
+    }
+}
+#pragma mark - getter
+
 @end
