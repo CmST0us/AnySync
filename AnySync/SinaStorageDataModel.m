@@ -106,6 +106,7 @@
         [weakSelf changeDirectoryToNextDirectoryWithName:obj];
     }];
 }
+
 - (void)changeDirectoryToNextDirectoryWithName:(NSString *)nextDirectoryName {
     _currentDirectory = (SinaStorageDirectory *)[_currentDirectory nextDirectoryWithName:nextDirectoryName];
 }
