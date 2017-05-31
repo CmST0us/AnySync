@@ -10,7 +10,8 @@
 
 @interface SinaStorageDownloadTask : DownloadTask
 
-+ (instancetype)downloadTaskWithFilePath:(NSString *)path;
++ (instancetype)downloadTaskWithFilePath:(NSString *)path
+                                  taskId:(NSString *)taskId;
 
 - (void)setDownloadTaskWithFilePath:(NSString *)path;
 

@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class DownloadTask;
 @interface FileDownloader : NSObject
 
++ (instancetype)shareInstance;
+
+- (void)addDownloadTask:(DownloadTask *)task;
+
+- (void)resumeTaskWithId:(NSString *)taskId;
+
+- (void)pauseTaskWithId:(NSString *)taskId;
+
+- (void)stopTaskWithId:(NSString *)taskId;
 @end

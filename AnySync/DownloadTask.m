@@ -9,6 +9,7 @@
 #import "DownloadTask.h"
 
 NSString const *kDownloadTaskFinishNotification = @"com.CmST0us.AnySync.DownloadTaskFinish";
+NSString const *kDownloadTaskErrorNotification = @"com.CmST0us.AnySync.DownloadTaskError";
 NSString const *kDownloadTaskIdKey = @"TaskID";
 NSString const *kDownloadTaskFilePathKey = @"FilePath";
 NSString const *kDownloadTaskErrorKey = @"Error";

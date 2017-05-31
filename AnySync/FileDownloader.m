@@ -35,14 +35,23 @@
 }
 
 #pragma mark - 下载器方法
-- (void)addDownloadTask:(DownloadTask *)task
-                         taskId:(NSString *)taskId{
+- (void)addDownloadTask:(DownloadTask *)task {
     [_downloadTask setObject:task forKey:task.taskId];
 }
 
 - (void)resumeTaskWithId:(NSString *)taskId {
     DownloadTask *task = [_downloadTask objectForKey:taskId];
-    [task doDownload];
+    [task resumeDownload];
+}
+
+- (void)pauseTaskWithId:(NSString *)taskId {
+    DownloadTask *task = [_downloadTask objectForKey:taskId];
+    [task pauseDownload];
+}
+
+- (void)stopTaskWithId:(NSString *)taskId {
+    DownloadTask *task = [_downloadTask objectForKey:taskId];
+    [task stopDownload];
 }
 
 @end

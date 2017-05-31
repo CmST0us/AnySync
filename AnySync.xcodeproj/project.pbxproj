@@ -10,6 +10,7 @@
 		4F0A46591EDDB29E009DA5FF /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A46581EDDB29E009DA5FF /* FileDownloader.m */; };
 		4F0A465D1EDDB9BE009DA5FF /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A465C1EDDB9BE009DA5FF /* DownloadTask.m */; };
 		4F0A46601EDDBBB0009DA5FF /* SinaStorageDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A465F1EDDBBB0009DA5FF /* SinaStorageDownloadTask.m */; };
+		4F0A46631EDE890E009DA5FF /* AnySyncDownloderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A46621EDE890E009DA5FF /* AnySyncDownloderTest.m */; };
 		4F24934C1EB2412C0020CD72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F24934B1EB2412C0020CD72 /* main.m */; };
 		4F24934F1EB2412C0020CD72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F24934E1EB2412C0020CD72 /* AppDelegate.m */; };
 		4F2493521EB2412C0020CD72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2493511EB2412C0020CD72 /* ViewController.m */; };
@@ -64,6 +65,7 @@
 		4F0A465C1EDDB9BE009DA5FF /* DownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTask.m; sourceTree = "<group>"; };
 		4F0A465E1EDDBBB0009DA5FF /* SinaStorageDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaStorageDownloadTask.h; sourceTree = "<group>"; };
 		4F0A465F1EDDBBB0009DA5FF /* SinaStorageDownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaStorageDownloadTask.m; sourceTree = "<group>"; };
+		4F0A46621EDE890E009DA5FF /* AnySyncDownloderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnySyncDownloderTest.m; sourceTree = "<group>"; };
 		4F2493471EB2412C0020CD72 /* AnySync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnySync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F24934B1EB2412C0020CD72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F24934D1EB2412C0020CD72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		4F55740F1ED94D3800D385E3 /* AnySyncS3DirectoryTreeTest */ = {
 			isa = PBXGroup;
 			children = (
+				4F0A46621EDE890E009DA5FF /* AnySyncDownloderTest.m */,
 				4F5574101ED94D3800D385E3 /* AnySyncS3DirectoryTreeTest.m */,
 				4F5574121ED94D3800D385E3 /* Info.plist */,
 			);
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0A46631EDE890E009DA5FF /* AnySyncDownloderTest.m in Sources */,
 				4F5574111ED94D3800D385E3 /* AnySyncS3DirectoryTreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
