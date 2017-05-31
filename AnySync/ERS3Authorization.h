@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString *kSecretAccessKey = @"8b01c8cdac78227334c60338423b068ffaeb880a";
-static NSString *kAccessKey = @"14npblh4nZ2EHv4jC6hO";
+#warning 导入配置
+#include "sina.config"
+//在sina.config文件中添加AccessKey和SecrectAccessKey
+//static NSString *kSecretAccessKey = @"";
+//static NSString *kAccessKey = @"";
 
 @interface ERS3Authorization : NSObject
 + (NSString *)authorizationValueWithAccessKey:(NSString *)AccessKey

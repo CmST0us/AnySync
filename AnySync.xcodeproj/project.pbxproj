@@ -103,6 +103,7 @@
 		4F55743C1EDD307600D385E3 /* SinaStorageDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaStorageDirectory.m; sourceTree = "<group>"; };
 		4F55743E1EDD309600D385E3 /* SinaStorageFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaStorageFile.h; sourceTree = "<group>"; };
 		4F55743F1EDD309600D385E3 /* SinaStorageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaStorageFile.m; sourceTree = "<group>"; };
+		4F852CA51EDF1CC800925D5F /* sina.config */ = {isa = PBXFileReference; lastKnownFileType = text; path = sina.config; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +253,7 @@
 				4F5573FF1ED94C6000D385E3 /* ERS3ObjectRequest.m */,
 				4F5574001ED94C6000D385E3 /* ERS3Request.h */,
 				4F5574011ED94C6000D385E3 /* ERS3Request.m */,
+				4F852CA51EDF1CC800925D5F /* sina.config */,
 				4F5574021ED94C6000D385E3 /* ERS3Authorization.h */,
 				4F5574031ED94C6000D385E3 /* ERS3Authorization.m */,
 			);
